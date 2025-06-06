@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Delux Bite</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .signup-container {
+      background: #222;
+      padding: 2.5rem 2.5rem 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 370px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .signup-container h2 {
+      color: goldenrod;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+    .signup-container input[type="text"],
+    .signup-container input[type="email"],
+    .signup-container input[type="password"] {
+      width: 92%;
+      padding: 12px;
+      margin: 10px 0 18px 0;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .signup-container input[type="text"]:focus,
+    .signup-container input[type="email"]:focus,
+    .signup-container input[type="password"]:focus {
+      background: #444;
+    }
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      background: goldenrod;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .signup-container button:hover {
+      background: #fff;
+      color: goldenrod;
+    }
+    .login-link {
+      display: block;
+      margin-top: 1.5rem;
+      color: #ccc;
+      font-size: 1rem;
+    }
+    .login-link a {
+      color: goldenrod;
+      text-decoration: none;
+      font-weight: bold;
+      transition: text-decoration 0.2s;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 500px) {
+      .signup-container {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+        max-width: 98vw;
+      }
+      .signup-container h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create Your Account</h2>
+    <form id="signup-form" autocomplete="off">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Username" required />
+      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="index.html">Login</a>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0xu77iTtEDpoX4Kry13klxHC-QfxfTXk",
+      authDomain: "deluxbite-de7d1.firebaseapp.com",
+      projectId: "deluxbite-de7d1",
+      storageBucket: "deluxbite-de7d1.appspot.com",
+      messagingSenderId: "242397260835",
+      appId: "1:242397260835:web:79786f1b448779ff945596",
+      measurementId: "G-M9XJSL98QW"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    const auth = getAuth(app);
+
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const inputs = this.querySelectorAll('input');
+      const email = inputs[1].value;
+      const password = inputs[3].value;
+      const confirmPassword = inputs[4].value;
+      if(password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert('Signup successful!');
+        window.location.href = "index.html";
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+document.getElementById('reset-password-link').addEventListener('click', async function(e) {
+  e.preventDefault();
+  const email = prompt("Enter your email to reset your password:");
+  if (email) {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Password reset email sent! Check your inbox.");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+});
+  </script>
+</body>
+</html>

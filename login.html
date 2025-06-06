@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Delux Bite</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #222;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+    .login-container h2 {
+      color: goldenrod;
+      margin-bottom: 1.5rem;
+    }
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background: #333;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background: goldenrod;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .login-container button:hover {
+      background: darkorange;
+    }
+    .login-container .signup-link {
+      display: block;
+      margin-top: 1.2rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    .login-container .signup-link a {
+      color: goldenrod;
+      text-decoration: none;
+    }
+    .login-container .signup-link a:hover {
+      text-decoration: underline;
+    }
+    .reset-link {
+      margin-top: 1rem;
+      color: #ccc;
+      font-size: 1rem;
+    }
+    .reset-link a {
+      color: #ffb300;
+      text-decoration: none;
+    }
+    .reset-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Delux Bite</h2>
+    <form id="login-form" autocomplete="off">
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div class="signup-link">
+      Don't have an account? <a href="signup.html">Sign up</a>
+    </div>
+    <div class="reset-link">
+      <a href="#" id="reset-password-link">Forgot password?</a>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0xu77iTtEDpoX4Kry13klxHC-QfxfTXk",
+      authDomain: "deluxbite-de7d1.firebaseapp.com",
+      projectId: "deluxbite-de7d1",
+      storageBucket: "deluxbite-de7d1.appspot.com",
+      messagingSenderId: "242397260835",
+      appId: "1:242397260835:web:79786f1b448779ff945596",
+      measurementId: "G-M9XJSL98QW"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    const auth = getAuth(app);
+
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const inputs = this.querySelectorAll('input');
+      const email = inputs[0].value;
+      const password = inputs[1].value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert('Login successful!');
+        window.location.href = "index.html"; // Change to your main page
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    document.getElementById('reset-password-link').addEventListener('click', async function(e) {
+      e.preventDefault();
+      const email = prompt("Enter your email to reset your password:");
+      if (email) {
+        try {
+          await sendPasswordResetEmail(auth, email);
+          alert("Password reset email sent! Check your inbox.");
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

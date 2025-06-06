@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Your Order - Delux Bite</title>
+  <link rel="icon" type="image/png" href="assets/log.jpg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .order-container {
+      background: #222;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      padding: 2.5rem 2rem 2rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      margin: 3rem auto 2rem auto;
+      text-align: center;
+    }
+    .place-order {
+      color: goldenrod;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    .place-order-sub {
+      color: #ccc;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .contact-form label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.3rem;
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 0.8rem;
+      border: none;
+      border-radius: 7px;
+      background: #333;
+      color: #fff;
+      font-size: 1rem;
+      resize: none;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      background: #444;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, goldenrod 60%, orange 100%);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(218,165,32,0.08);
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, orange 60%, goldenrod 100%);
+      transform: scale(1.04);
+    }
+    @media (max-width: 600px) {
+      .order-container {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+        max-width: 98vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="order-container">
+    <h1 class="place-order">Place Your Order</h1>
+    <p class="place-order-sub">Welcome to Delux Bite! Please fill out the form below to complete your order.</p>
+
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+      <input type="hidden" name="access_key" value="83cd239f-766a-4db5-ab61-979a0275bb33" />
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter Your Active Line" required>
+
+      <label for="food">Food Item:</label>
+      <select id="food" name="food" required>
+        <option value="">--Select--</option>
+        <option value="Chicken Wings">Chicken Wings</option>
+        <option value="Grilled Chicken">Grilled Chicken</option>
+        <option value="Vegetable Pizza">Vegetable Pizza</option>
+      </select>
+
+      <label for="lga">Plateau LGA:</label>
+      <select id="lga" name="lga" required>
+        <option value="">--Select--</option>
+        <option value="Jos">Jos</option>
+        <option value="Bokkos">Bokkos</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" rows="3" placeholder="Please provide a precise and detailed address" required></textarea>
+
+      <label for="notes">Additional Notes:</label>
+      <textarea id="notes" name="notes" rows="2" placeholder="Enter additional information (optional)"></textarea>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

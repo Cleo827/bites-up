@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Your Reservation - Delux Bite</title>
+  <link rel="icon" type="image/png" href="assets/log.jpg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      padding: 40px 20px;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: goldenrod;
+      margin-bottom: 10px;
+    }
+
+    .place-order-sub {
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+      color: #ddd;
+    }
+
+    .reservation-info {
+      display: block;
+      font-size: 1rem;
+      color: #e6b800;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .reservation-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
+      text-align: left;
+    }
+
+    .reservation-form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .reservation-form input,
+    .reservation-form select,
+    .reservation-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #666;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: #222;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .reservation-form input:focus,
+    .reservation-form select:focus,
+    .reservation-form textarea:focus {
+      outline: none;
+      border-color: goldenrod;
+      box-shadow: 0 0 5px goldenrod;
+    }
+
+    .reservation-form button {
+      margin-top: 18px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: goldenrod;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .reservation-form button:hover {
+      background-color: #e6b800;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 5px;
+      }
+      .reservation-form {
+        padding: 16px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .place-order-sub {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Place Your Reservation</h1>
+  <p class="place-order-sub">Welcome to Delux Bite! Please fill out the form below to complete your reservation.</p>
+  <span class="reservation-info">
+    For any reservation not listed in "Nature of Event", kindly use the "Other" option and specify the event in the notes field.
+  </span>
+
+  <form action="https://api.web3forms.com/submit" method="POST" class="reservation-form">
+    <input type="hidden" name="access_key" value="83cd239f-766a-4db5-ab61-979a0275bb33">
+
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="event">Nature of Event:</label>
+    <select id="event" name="event" required>
+      <option value="">-- Select Event Type --</option>
+      <option value="Birthday">Birthday Party</option>
+      <option value="Get-together">Get-together</option>
+      <option value="Couples-hangout">Couples Hangout</option>
+      <option value="End of Year Party">End of Year Party</option>
+      <option value="Other">Other (Specify in Notes)</option>
+    </select>
+
+    <label for="notes">Additional Notes:</label>
+    <textarea id="notes" name="notes" rows="3" placeholder="Any extra info? (optional)"></textarea>
+
+    <button type="submit">Reserve Now</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

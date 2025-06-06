@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delux Bite</title>
+  <link rel="icon" type="image/png" href="assets/log.jpg" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .logo-nav-container {
+      width: 100%;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+    }
+    .contact-section {
+      background: #222;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      padding: 2.5rem 2rem 2rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      margin: 3rem auto 2rem auto;
+      text-align: center;
+    }
+    .contact-section h2 {
+      color: goldenrod;
+      margin-bottom: 1rem;
+    }
+    .contact-section p {
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    .contact-form label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.3rem;
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 0.8rem;
+      border: none;
+      border-radius: 7px;
+      background: #333;
+      color: #fff;
+      font-size: 1rem;
+      resize: none;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: #444;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      background: goldenrod;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: darkorange;
+    }
+    @media (max-width: 600px) {
+      .contact-section {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+        max-width: 98vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo and Navigation Bar -->
+  <div class="logo-nav-container">
+    <!-- Add logo or nav here if needed -->
+  </div>
+
+  <!-- Feedback / Contact Section -->
+  <section class="contact-section" id="contact">
+    <h2>Feedback</h2>
+    <p>We value your feedback! Please fill out the form below to share your thoughts with us.</p>
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+      <input type="hidden" name="access_key" value="83cd239f-766a-4db5-ab61-979a0275bb33" />
+      
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+
+      <label for="number">Phone Number</label>
+      <input type="tel" id="number" name="number" placeholder="Enter your Phone number" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Enter your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</body>
+</html>
