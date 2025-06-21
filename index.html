@@ -890,6 +890,98 @@ body.dark-mode .hero-content h1 {
 .contact-form-section h2 {
   color: #b8860b;
   margin-bottom: 1.2rem;
+
+}
+
+/* --- Gallery Layout --- */
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.image-item {
+  width: 150px;
+  background: #fffbe7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(218,165,32,0.10);
+  overflow: hidden;
+  transition: transform 0.18s;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-item img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  display: block;
+  background: #fff;
+}
+
+/* Place price and cart icon below the image */
+.menu-overlay {
+  position: static;
+  margin-top: 0.5rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 8px rgba(218,165,32,0.10);
+}
+
+.menu-price {
+  color: #b8860b;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.menu-cart-btn {
+  background: goldenrod;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(218,165,32,0.10);
+}
+.menu-cart-btn:hover {
+  background: orange;
+  transform: scale(1.1);
+}
+
+/* Responsive for mobile */
+@media (max-width: 700px) {
+  .image-gallery {
+    gap: 0.7rem;
+  }
+  .image-item {
+    width: 44vw;
+    min-width: 130px;
+    max-width: 180px;
+  }
+  .image-item img {
+    height: 90px;
+  }
+  .menu-overlay {
+    width: 96%;
+    padding: 6px 6px;
+  }
 }
 </style>
 
@@ -938,7 +1030,6 @@ body.dark-mode .hero-content h1 {
         </button>
         <ul id="main-nav">
           <li><a href="#menu">Menu</a></li>
-          <li><a href="#prices">Prices</a></li>
           <li><a href="#reservation">Reservation</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#FAQ">FAQ</a></li>
@@ -970,136 +1061,91 @@ body.dark-mode .hero-content h1 {
   </section>
 
   <!-- POPULAR MENU -->
-  <main id="menu">
-    <section class="popular-section">
-      <h2 class="section-title">Our Popular Dishes</h2>
-      <div class="image-gallery">
-        <div class="image-item"><img src="assets/burga.jpg" alt="Burger" loading="lazy"></div>
-        <div class="image-item"><img src="assets/chicken wigs.jpg" alt="Chicken Wings" loading="lazy"></div>
-        <div class="image-item"><img src="assets/chiken.jpg" alt="Grilled Chicken" loading="lazy"></div>
-        <div class="image-item"><img src="assets/chiken wigss.webp" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/jellof rice.jpg" alt="Jollof Rice" loading="lazy"></div>
-        <div class="image-item"><img src="assets/vergitabale piza.jpg" alt="Vegetable Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/perperoni pizza.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/sharawa.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/egusi.png" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/ogbono_788x.webp" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/peper soup.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/okoro.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/fried rice.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/indomie.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        <div class="image-item"><img src="assets/spagiti.jpg" alt="Pepperoni Pizza" loading="lazy"></div>
-        </div>
-    </section>
-  </main>
-
-  <!-- PRICING TABLE -->
-  <section class="pricing-section" id="prices">
-    <h2 class="pricing-title">Prices</h2>
-    <div class="table-wrapper">
-      <table class="menu-table">
-        <thead>
-          <tr>
-            <th>S/N</th>
-            <th>Food Item</th>
-            <th>Price</th>
-            <th>Order</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Chicken Wings</td>
-            <td>₦3,000.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Chicken Wings" data-price="3000" aria-label="Add Chicken Wings to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Grilled Chicken</td>
-            <td>₦3,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Grilled Chicken" data-price="3500" aria-label="Add Grilled Chicken to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Jellof Rice</td>
-            <td>₦2,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Jellof Rice" data-price="2500" aria-label="Add Jellof Rice to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Burga</td>
-            <td>₦3,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Burga" data-price="3500" aria-label="Add Burga to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Vegetable Pizza</td>
-            <td>₦6,000.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Vegetable Pizza" data-price="6000" aria-label="Add Vegetable Pizza to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Egusi</td>
-            <td>₦1,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Egusi" data-price="1500" aria-label="Add Egusi to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Shawarma</td>
-            <td>₦4,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Shawarma" data-price="4500" aria-label="Add Shawarma to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Okoro</td>
-            <td>₦1,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Okoro" data-price="1500" aria-label="Add Okoro to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Egusi (Small)</td>
-            <td>₦1,000.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Egusi (Small)" data-price="1000" aria-label="Add Egusi (Small) to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Fried Rice</td>
-            <td>₦1,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Fried Rice" data-price="1500" aria-label="Add Fried Rice to Cart">Add to Cart</button>
-            </td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>Indomie and Egg</td>
-            <td>₦2,500.00</td>
-            <td>
-              <button class="add-to-cart-btn" data-name="Indomie and Egg" data-price="2500" aria-label="Add Indomie and Egg to Cart">Add to Cart</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+   <section class="popular-section" id="menu">
+  <h2 class="section-title">Popular Menu</h2>
+  <div class="image-gallery">
+    <div class="image-item">
+      <img src="assets/burga.jpg" alt="Burga" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦4,500</span>
+        <button class="menu-cart-btn" data-name="Burga" data-price="3500" aria-label="Add Burga to Cart">🛒</button>
+      </div>
     </div>
-  </section>
-  <!-- RESERVATION SECTION -->
+    <div class="image-item">
+      <img src="assets/chicken wigs.jpg" alt="Chicken Wings" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦3,000</span>
+        <button class="menu-cart-btn" data-name="Chicken Wings" data-price="3000" aria-label="Add Chicken Wings to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/chiken.jpg" alt="Grilled Chicken" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦3,500</span>
+        <button class="menu-cart-btn" data-name="Grilled Chicken" data-price="3500" aria-label="Add Grilled Chicken to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/chips.jpg" alt="Chips" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦1,500</span>
+        <button class="menu-cart-btn" data-name="Chips" data-price="3500" aria-label="Add Chips to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/spagiti.jpg" alt="Spaghetti" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦1,500</span>
+        <button class="menu-cart-btn" data-name="Spaghetti" data-price="3500" aria-label="Add Spaghetti to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/perperoni pizza.jpg" alt="Perperoni Pizza" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦6,500</span>
+        <button class="menu-cart-btn" data-name="Perperoni Pizza" data-price="3500" aria-label="Add Perperoni Pizza to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/peper soup.jpg" alt="Peper Soup" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦2,500</span>
+        <button class="menu-cart-btn" data-name="Peper Soup" data-price="3500" aria-label="Add Peper Soup to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/egusi.png" alt="Egusi" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦1,500</span>
+        <button class="menu-cart-btn" data-name="Egusi" data-price="3500" aria-label="Add Egusi to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/okoro.jpg" alt="Okoro" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦1,500</span>
+        <button class="menu-cart-btn" data-name="Okoro" data-price="3500" aria-label="Add Okoro to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/ogbono_788x.webp" alt="Ogbono" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦1,500</span>
+        <button class="menu-cart-btn" data-name="Ogbono" data-price="3500" aria-label="Add Ogbono to Cart">🛒</button>
+      </div>
+    </div>
+    <div class="image-item">
+      <img src="assets/fried rice.jpg" alt="Fried Rice" loading="lazy">
+      <div class="menu-overlay">
+        <span class="menu-price">₦3,500</span>
+        <button class="menu-cart-btn" data-name="Fried Rice" data-price="3500" aria-label="Add Fried Rice to Cart">🛒</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- RESERVATION SECTION -->
   <section class="reservation-section" id="reservation">
     <h2 class="reservation-title">Reservation</h2>
     <p class="reservation-text">
@@ -1156,7 +1202,7 @@ body.dark-mode .hero-content h1 {
         Phone: <a href="tel:+2348102408183" style="color:inherit;text-decoration:underline;">+234 2348102408183</a><br>
         Email: <a href="mailto:info@deluxbite.com" style="color:inherit;text-decoration:underline;">info@deluxbite.com</a>
       </div>
-      <button>Contact us</button>
+      <a href="contact.html" class="contact-button" aria-label="Contact Us">Contact Us</a>
     </section>
 
 
@@ -1369,27 +1415,27 @@ body.dark-mode .hero-content h1 {
       renderCart();
     };
 
-    // Add to cart logic
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        const name = this.getAttribute('data-name');
-        const price = parseInt(this.getAttribute('data-price'), 10);
-        // Check if item already in cart
-        const found = cart.find(item => item.name === name);
-        if (found) {
-          found.qty += 1;
-        } else {
-          cart.push({ name, price, qty: 1 });
-        }
-        renderCart();
-        // Show modal
-        document.getElementById('order-modal').style.display = 'flex';
-        setTimeout(() => {
-          document.getElementById('order-modal').style.display = 'none';
-        }, 1500);
-      };
-    });
+  // Also handle add-to-cart from gallery menu-cart-btn
+document.querySelectorAll('.menu-cart-btn').forEach(btn => {
+  btn.onclick = function(e) {
+    e.preventDefault();
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'), 10);
+    // Check if item already in cart
+    const found = cart.find(item => item.name === name);
+    if (found) {
+      found.qty += 1;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    renderCart();
+    // Show modal
+    document.getElementById('order-modal').style.display = 'flex';
+    setTimeout(() => {
+      document.getElementById('order-modal').style.display = 'none';
+    }, 1500);
+  };
+});
 
     // Cart sidebar open/close
     function closeCart() {
