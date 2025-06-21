@@ -156,37 +156,16 @@ body.dark-mode .nav-dark-btn {
 
 /* ...existing code... */
 .hero-section {
-  /* Remove or comment out the background property */
-  /* background: linear-gradient(120deg, #fffbe7 60%, #fff8e1 100%); */
+  background: linear-gradient(rgba(255, 217, 102, 0.7), rgba(255, 248, 225, 0.7)),
+    url('assets/burga.jpg') center center/cover no-repeat;
   padding: 3rem 1rem 2rem 1rem;
   text-align: center;
-}
-/* ...existing code... */
-</style>
-/* Add this to your <style> block */
-  .hero-content h1 {
-  font-size: 2.7rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-  color: #FFD700;
-  text-shadow:
-    0 0 1px #FFD700,
-    1px 1px 1px #222;
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  background-clip: unset;
-}
-.hero-content h2 {
-  color: #222;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-.hero-content p {
-  color: #444;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(218,165,32,0.08);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .order-button {
   background: linear-gradient(90deg, goldenrod 60%, orange 100%);
@@ -729,6 +708,14 @@ body.dark-mode #back-to-top {
 body.dark-mode .about-section {
   color: #fff !important;
 }
+body.dark-mode .hero-section,
+body.dark-mode .hero-section .hero-content,
+body.dark-mode .hero-section .hero-content h1,
+body.dark-mode .hero-section .hero-content h2,
+body.dark-mode .hero-section .hero-content p {
+  color: #fff !important;
+  text-shadow: 0 2px 8px #222, 0 1px 2px #000;
+}
 
 .nav-dark-btn {
   background: none;
@@ -889,6 +876,20 @@ body.dark-mode .hero-content h1 {
     max-width: 340px;
     height: 180px;
   }
+}
+
+.contact-form-section {
+  background: #fffbe7;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(218,165,32,0.08);
+  padding: 2rem 1rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: center;
+}
+.contact-form-section h2 {
+  color: #b8860b;
+  margin-bottom: 1.2rem;
 }
 </style>
 
@@ -1137,13 +1138,16 @@ body.dark-mode .hero-content h1 {
       <p>Delux Bite is committed to delivering delicious, high-quality meals to your doorstep with speed and care. Our chefs use only the freshest ingredients to create dishes you'll love.</p>
       <!-- In your About section, near the email address, add this: -->
       <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 10px;">
-        <img src="assets/passport.jpg" alt="Contact Person" class="oval-image" loading="lazy">
+        <img src="assets/owner.jpg" alt="Contact Person" class="oval-image" loading="lazy">
         <div style="text-align:left;">
           <div><strong>Email:</strong> <a href="mailto:info@deluxbite.com" style="color:inherit;text-decoration:underline;">info@deluxbite.com</a></div>
         </div>
       </div>
       <!-- Google Maps Embed -->
       <iframe src="https://www.google.com/maps?q=Jos+Bokkos+Plateau+State+Nigeria&output=embed" width="100%" height="120" style="border:0;border-radius:10px;margin-top:1rem;" allowfullscreen="" loading="lazy" title="Delux Bite Location"></iframe>
+      
+      
+      
       <!-- CONTACT SECTION inside About -->
       <div class="contact-address" id="contact" style="margin-top:1rem;">
         <u><strong>Contact Address:</strong><br></u>
@@ -1152,7 +1156,10 @@ body.dark-mode .hero-content h1 {
         Phone: <a href="tel:+2348102408183" style="color:inherit;text-decoration:underline;">+234 2348102408183</a><br>
         Email: <a href="mailto:info@deluxbite.com" style="color:inherit;text-decoration:underline;">info@deluxbite.com</a>
       </div>
+      <button>Contact us</button>
     </section>
+
+
 
     <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
@@ -1213,6 +1220,46 @@ body.dark-mode .hero-content h1 {
         <div class="faq-item">
           <h3>How can I add a profile picture?</h3>
           <p>Click on the avatar circle at the side of the page and select a picture from your gallery to upload as your profile picture.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I track my order?</h3>
+          <p>After placing your order, you will receive a confirmation message. You can contact us via WhatsApp or phone to get real-time updates on your order status.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I cancel or change my order?</h3>
+          <p>Yes, you can cancel or modify your order by contacting us immediately after placing it. Once your food is being prepared, changes may not be possible.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you offer vegetarian or vegan options?</h3>
+          <p>Yes, we offer a variety of vegetarian and vegan dishes. Please check our menu or ask our staff for recommendations.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is there a delivery fee?</h3>
+          <p>Delivery within Jos and Bokkos is free for orders above ₦5,000. For smaller orders or distant locations, a small delivery fee may apply.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I know my reservation is confirmed?</h3>
+          <p>After submitting your reservation, you will receive a confirmation email or WhatsApp message from our team. Please check your inbox or messages.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I order for a group or event?</h3>
+          <p>Absolutely! We cater for groups, parties, and events. Please use the reservation page or contact us directly for special arrangements and discounts.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you have special offers or discounts?</h3>
+          <p>We run special offers from time to time. Subscribe to our newsletter or follow us on social media to stay updated on our latest deals.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I subscribe to the newsletter?</h3>
+          <p>Scroll down to the newsletter section on our homepage, enter your email, and click "Subscribe" to receive updates and exclusive offers.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is my personal information safe?</h3>
+          <p>Yes, your privacy is important to us. We use secure systems to protect your data and never share your information with third parties.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I pay online?</h3>
+          <p>Yes, online payment is available. You can also pay via bank transfer or cash on delivery.</p>
         </div>
       </div>
     </section>
